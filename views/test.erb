@@ -1,3 +1,5 @@
+<link href="css/style.css" rel="stylesheet">
+
 <script src="js/preview.js"></script>
 
 <form>
@@ -8,7 +10,7 @@
         <option value='Area 4'>Area 4</option>
     </select>
 
-    <input type='button' id='inputArea' onclick='getArea()' value='Input Area'>
+    <input type='button' id='inputArea' onclick='getInput("area")' value='Input Area'>
 
     <select id="list">
         <option value='List 1'>List 1</option>
@@ -17,7 +19,7 @@
         <option value='List 4'>List 4</option>
     </select>
 
-    <input type='button' id='inputList' onclick='getList()' value='Input List'>
+    <input type='button' id='inputList' onclick='getInput("list")' value='Input List'>
 
     <select id="item">
         <option value='Item 1'>Item 1</option>
@@ -26,7 +28,7 @@
         <option value='Item 4'>Item 4</option>
     </select>
 
-    <input type='button' id='inputItem' onclick='getItem()' value='Input Item'>
+    <input type='button' id='inputItem' onclick='getInput("item")' value='Input Item'>
 
     <select id="thing">
         <option value='Thing 1'>Thing 1</option>
@@ -35,7 +37,7 @@
         <option value='Thing 4'>Thing 4</option>
     </select>
 
-    <input type='button' id='inputThing' onclick='getThing()' value='Input Thing'>
+    <input type='button' id='inputThing' onclick='getInput("thing")' value='Input Thing'>
     
     <div id='preview' style="border: 1px solid black;">
     </div>
