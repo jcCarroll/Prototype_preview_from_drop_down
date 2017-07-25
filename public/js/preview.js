@@ -1,10 +1,20 @@
 function getInput(level) {
-    console.log(level);
     selectedItem = document.getElementById(level).value;
     previewArea = document.getElementById('preview');
-    pTag = document.createElement('p');
-    pTag.setAttribute('id', level + 'Selection');
+    aTag = document.createElement('a');
+    aTag.setAttribute('href', '#');
+    aTag.setAttribute('value', selectedItem)
+    aTag.setAttribute('onclick', 'test()');
+    aTag.setAttribute('id', '1.0.0.0');
+    aTag.setAttribute('class', level + 'Selection')
     selectedItemText = document.createTextNode(selectedItem);
-    pTag.appendChild(selectedItemText);
-    previewArea.appendChild(pTag);
+    aTag.appendChild(selectedItemText);
+    previewArea.appendChild(aTag);
+    br = document.createElement('br');
+    previewArea.appendChild(br);
+}
+
+function expCounter(location) {
+    area = document.getElementById(location);
+    console.log(location);
 }

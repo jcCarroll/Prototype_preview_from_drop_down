@@ -1,15 +1,15 @@
-#areaSelection {
+.areaSelection {
     padding: 0 0 0 10px;
 }
 
-#listSelection {
+.listSelection {
     padding: 0 0 0 30px;
 }
 
-#itemSelection {
+.itemSelection {
     padding: 0 0 0 50px;
 }
 
-#thingSelection {
+.thingSelection {
     padding: 0 0 0 70px;
 }
