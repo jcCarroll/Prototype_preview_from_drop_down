@@ -9,18 +9,19 @@ function createExp(level, location) {
 }
 
 function getInput(level) {
-    selectedItem = document.getElementById(level).value;
-    previewArea = document.getElementById('preview');
-    aTag = document.createElement('a');
+    var currentID = inputArea + "." + inputList + "." + inputItem + "." + inputThing;
+    var selectedItem = document.getElementById(level).value;
+    var previewArea = document.getElementById('preview');
+    var aTag = document.createElement('a');
     aTag.setAttribute('href', '#');
-    aTag.setAttribute('value', selectedItem)
-    aTag.setAttribute('onclick', 'test()');
-    aTag.setAttribute('id', inputArea + "." + inputList + "." + inputItem + "." + inputThing);
-    aTag.setAttribute('class', level + 'Selection')
-    selectedItemText = document.createTextNode(selectedItem);
+    aTag.setAttribute('value', selectedItem);
+    aTag.setAttribute('onclick', 'removeOne("' + currentID + '")');
+    aTag.setAttribute('id', currentID);
+    aTag.setAttribute('class', level + 'Selection');
+    var selectedItemText = document.createTextNode(selectedItem);
     aTag.appendChild(selectedItemText);
     previewArea.appendChild(aTag);
-    br = document.createElement('br');
+    var br = document.createElement('br');
     previewArea.appendChild(br);
 }
 
@@ -34,4 +35,19 @@ function expCounter(location) {
     } else if (location == 'inputThing') {
         inputThing += 1;
     }
+}
+
+function removeOne(id) {
+    var removeExp = document.getElementById(id);
+    var removeBtn = document.createElement('input');
+    removeBtn.setAttribute('type', 'button');
+    removeBtn.setAttribute('id', 'removeItem');
+    removeBtn.setAttribute('onclick', 'remove(' + id + ')');
+    removeBtn.setAttribute('value', 'Remove');
+    removeExp.appendChild(removeBtn);
+}
+
+function remove(id) {
+    var takeAway = document.getElementById(id);
+    takeAway.removeChild();
 }
