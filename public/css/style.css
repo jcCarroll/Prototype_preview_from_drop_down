@@ -13,3 +13,7 @@
 .thingSelection {
     padding: 0 0 0 70px;
 }
+
+.preview {
+    border: 1px solid black;
+}
