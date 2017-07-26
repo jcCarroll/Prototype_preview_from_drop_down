@@ -17,11 +17,12 @@ function getInput(level) {
     aTag.setAttribute('value', selectedItem);
     aTag.setAttribute('onclick', 'removeBtn("' + currentID + '")');
     aTag.setAttribute('id', currentID);
-    aTag.setAttribute('class', level + 'Selection');
+    aTag.setAttribute('class', level);
     var selectedItemText = document.createTextNode(selectedItem);
     aTag.appendChild(selectedItemText);
     previewArea.appendChild(aTag);
     var br = document.createElement('br');
+    br.setAttribute('id', 'br' + currentID)
     previewArea.appendChild(br);
 }
 
@@ -50,4 +51,8 @@ function removeBtn(id) {
 function remove(id) {
     var takeAway = document.getElementById(id);
     takeAway.parentNode.removeChild(takeAway);
+    var takeAwayBR = document.getElementById('br' + id);
+    takeAwayBR.parentNode.removeChild(takeAwayBR);
 }
+
+var x = document.querySelectorAll("a[target]");
