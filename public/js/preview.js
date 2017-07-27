@@ -15,7 +15,7 @@ function getInput(level) {
     var aTag = document.createElement('a');
     aTag.setAttribute('href', '#');
     aTag.setAttribute('value', selectedItem);
-    aTag.setAttribute('onclick', 'removeBtn("' + currentID + '")');
+    aTag.setAttribute('onclick', 'removeBtn("' + currentID + '","' + level + '")');
     aTag.setAttribute('id', currentID);
     aTag.setAttribute('class', level);
     var selectedItemText = document.createTextNode(selectedItem);
@@ -38,17 +38,17 @@ function expCounter(location) {
     }
 }
 
-function removeBtn(id) {
+function removeBtn(id, area) {
     var removeExp = document.getElementById(id);
     var removeBtn = document.createElement('input');
     removeBtn.setAttribute('type', 'button');
     removeBtn.setAttribute('id', 'removeItem');
-    removeBtn.setAttribute('onclick', 'remove("' + id + '")');
+    removeBtn.setAttribute('onclick', 'remove("' + id + '","' + area + '")');
     removeBtn.setAttribute('value', 'Remove');
     removeExp.appendChild(removeBtn);
 }
 
-function remove(id) {
+function remove(id, area) {
     var takeAway = document.getElementById(id);
     takeAway.parentNode.removeChild(takeAway);
     var takeAwayBR = document.getElementById('br' + id);
