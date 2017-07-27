@@ -49,10 +49,21 @@ function removeBtn(id, area) {
 }
 
 function remove(id, area) {
-    var takeAway = document.getElementById(id);
-    takeAway.parentNode.removeChild(takeAway);
-    var takeAwayBR = document.getElementById('br' + id);
-    takeAwayBR.parentNode.removeChild(takeAwayBR);
+    if (area == 'area') {
+        splitID = id.substring(0, 1)
+    } else if (area == "list") {
+        splitID = id.substring(0, 3)
+    } else if (area == "item") {
+        splitID = id.substring(0, 5)
+    }
+    var takeAway = document.getElementById('preview').querySelectorAll('[id^="' + splitID + '"]');
+    var takeAwayLength = takeAway.length;
+    for (var i = 0; i < takeAwayLength; i++) {
+        takeAway[i].parentNode.removeChild(takeAway[i]);
+    }
+    var takeAwayBR = document.getElementById('preview').querySelectorAll('[id^="br' + splitID + '"]');
+    var takeAwayBRLength = takeAway.length;
+    for (var i = 0; i < takeAwayBRLength; i++) {
+        takeAwayBR[i].parentNode.removeChild(takeAwayBR[i]);
+    }
 }
-
-var x = document.querySelectorAll("a[target]");
