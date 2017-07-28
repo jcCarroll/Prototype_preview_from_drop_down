@@ -15,7 +15,7 @@ function getInput(level) {
     var aTag = document.createElement('a');
     aTag.setAttribute('href', '#');
     aTag.setAttribute('value', selectedItem);
-    aTag.setAttribute('onclick', 'removeBtn("' + currentID + '","' + level + '")');
+    aTag.setAttribute('onclick', 'removeBtn("' + currentID + '","' + level + '"),editBtn("' + currentID + '")');
     aTag.setAttribute('id', currentID);
     aTag.setAttribute('class', level);
     var selectedItemText = document.createTextNode(selectedItem);
@@ -36,6 +36,16 @@ function expCounter(location) {
     } else if (location == 'inputThing') {
         inputThing += 1;
     }
+}
+
+function editBtn(id) {
+    var editExp = document.getElementById(id);
+    var editBtn = document.createElement('input');
+    editBtn.setAttribute('type', 'button');
+    editBtn.setAttribute('id', 'removeItem');
+    editBtn.setAttribute('onclick', 'remove("' + id + '"');
+    editBtn.setAttribute('value', 'Edit');
+    editExp.appendChild(editBtn);
 }
 
 function removeBtn(id, area) {
