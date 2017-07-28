@@ -9,6 +9,7 @@ function createExp(level, location) {
 }
 
 function getInput(level) {
+    console.log("get input running")
     var currentID = inputArea + "." + inputList + "." + inputItem + "." + inputThing;
     var selectedItem = document.getElementById(level).value;
     var previewArea = document.getElementById('preview');
@@ -39,16 +40,32 @@ function expCounter(location) {
 }
 
 function editBtn(id) {
+    console.log("edit button create", id)
     var editExp = document.getElementById(id);
     var editBtn = document.createElement('input');
     editBtn.setAttribute('type', 'button');
-    editBtn.setAttribute('id', 'removeItem');
-    editBtn.setAttribute('onclick', 'remove("' + id + '"');
+    editBtn.setAttribute('id', 'editItem');
+    editBtn.setAttribute('onclick', 'edit("' + id + '")');
     editBtn.setAttribute('value', 'Edit');
     editExp.appendChild(editBtn);
 }
 
+function edit(id) {
+    var removeEditBtn = document.getElementById('editItem');
+    removeEditBtn.remove(removeEditBtn);
+    var removeRemoveBtn = document.getElementById('removeItem');
+    removeRemoveBtn.remove(removeRemoveBtn);
+    var editExp = document.getElementById(id);
+    var editInput = document.createElement('input');
+    editInput.setAttribute('type', 'text');
+    // editInput.setAttribute('id', 'editItem');
+    editExp.appendChild(editInput);
+    // var editsubmit = document.createElement('input');
+    // document.getElementById(id).innerHTML = newText;
+}
+
 function removeBtn(id, area) {
+    console.log("remove button create", id)
     var removeExp = document.getElementById(id);
     var removeBtn = document.createElement('input');
     removeBtn.setAttribute('type', 'button');
