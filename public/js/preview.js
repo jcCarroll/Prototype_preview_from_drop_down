@@ -56,14 +56,21 @@ function remove(id, area) {
     } else if (area == "item") {
         splitID = id.substring(0, 5)
     }
-    var takeAway = document.getElementById('preview').querySelectorAll('[id^="' + splitID + '"]');
-    var takeAwayLength = takeAway.length;
-    for (var i = 0; i < takeAwayLength; i++) {
-        takeAway[i].parentNode.removeChild(takeAway[i]);
-    }
-    var takeAwayBR = document.getElementById('preview').querySelectorAll('[id^="br' + splitID + '"]');
-    var takeAwayBRLength = takeAway.length;
-    for (var i = 0; i < takeAwayBRLength; i++) {
-        takeAwayBR[i].parentNode.removeChild(takeAwayBR[i]);
+    if (area == "thing") {
+        var takeAway = document.getElementById(id);
+        takeAway.parentNode.removeChild(takeAway);
+        var takeAwayBR = document.getElementById('br' + id);
+        takeAwayBR.parentNode.removeChild(takeAwayBR);
+    } else {
+        var takeAwayAll = document.getElementById('preview').querySelectorAll('[id^="' + splitID + '"]');
+        var takeAwayAllLength = takeAwayAll.length;
+        for (var i = 0; i < takeAwayAllLength; i++) {
+            takeAwayAll[i].parentNode.removeChild(takeAwayAll[i]);
+        }
+        var takeAwayAllBR = document.getElementById('preview').querySelectorAll('[id^="br' + splitID + '"]');
+        var takeAwayAllBRLength = takeAwayAll.length;
+        for (var i = 0; i < takeAwayAllBRLength; i++) {
+            takeAwayAllBR[i].parentNode.removeChild(takeAwayAllBR[i]);
+        }
     }
 }
