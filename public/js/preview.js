@@ -47,6 +47,7 @@ function buttons(id, area) {
     if (remove || edit || input || submit) {
         alert('You must complete current edit/remove first');
     } else {
+        cancelBtn(id);
         editBtn(id);
         removeBtn(id, area);
     }
@@ -130,4 +131,20 @@ function remove(id, area) {
             takeAwayAllBR[i].parentNode.removeChild(takeAwayAllBR[i]);
         }
     }
+}
+
+function cancelBtn(id) {
+    var cancel = document.getElementById(id);
+    var cancelBtn = document.createElement('input');
+    cancelBtn.setAttribute('type', 'button');
+    cancelBtn.setAttribute('value', 'Cancel');
+    cancelBtn.setAttribute('onclick', 'cancel("' + id + '")');
+    cancel.parentNode.insertBefore(cancelBtn, cancel.nextSibling);
+}
+
+function cancel(id) {
+    var remove = document.getElementById('removeItem');
+    var edit = document.getElementById('editItem');
+    var input = document.getElementById('inputBox');
+    var submit = document.getElementById('editSubmit');
 }
