@@ -90,6 +90,8 @@ function removeBtn(id, area) {
 }
 
 function remove(id, area) {
+    var removeEdit = document.getElementById('editItem')
+    removeEdit.parentNode.removeChild(removeEdit)
     if (area == 'area') {
         splitID = id.substring(0, 1)
     } else if (area == "list") {
