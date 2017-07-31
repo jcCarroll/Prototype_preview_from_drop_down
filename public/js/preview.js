@@ -9,7 +9,6 @@ function createExp(level, location) {
 }
 
 function getInput(level) {
-    console.log("get input running")
     var currentID = inputArea + "." + inputList + "." + inputItem + "." + inputThing;
     var selectedItem = document.getElementById(level).value;
     var previewArea = document.getElementById('preview');
@@ -40,14 +39,13 @@ function expCounter(location) {
 }
 
 function editBtn(id) {
-    console.log("edit button create", id)
     var editExp = document.getElementById(id);
     var editBtn = document.createElement('input');
     editBtn.setAttribute('type', 'button');
     editBtn.setAttribute('id', 'editItem');
     editBtn.setAttribute('onclick', 'edit("' + id + '")');
     editBtn.setAttribute('value', 'Edit');
-    editExp.appendChild(editBtn);
+    editExp.parentNode.insertBefore(editBtn, editExp.nextSibling);
 }
 
 function edit(id) {
@@ -55,17 +53,33 @@ function edit(id) {
     removeEditBtn.remove(removeEditBtn);
     var removeRemoveBtn = document.getElementById('removeItem');
     removeRemoveBtn.remove(removeRemoveBtn);
+
+    var editInputBox = document.getElementById(id);
+    var editSubmit = document.createElement('input');
+    editSubmit.setAttribute('type', 'button');
+    editSubmit.setAttribute('id', 'editSubmitBtn');
+    editSubmit.setAttribute('value', 'Submit Change');
+    editSubmit.setAttribute('onclick', 'editSubmit("' + id + '")')
+    editInputBox.parentNode.insertBefore(editSubmit, editInputBox.nextSibling);
+
     var editExp = document.getElementById(id);
     var editInput = document.createElement('input');
     editInput.setAttribute('type', 'text');
-    // editInput.setAttribute('id', 'editItem');
-    editExp.appendChild(editInput);
-    // var editsubmit = document.createElement('input');
-    // document.getElementById(id).innerHTML = newText;
+    editInput.setAttribute('id', 'inputBox');
+    editExp.parentNode.insertBefore(editInput, editExp.nextSibling);
+}
+
+function editSubmit(id) {
+    var newName = document.getElementById('inputBox').value;
+    document.getElementById(id).innerHTML = newName;
+
+    var removeSubmit = document.getElementById('editSubmitBtn');
+    removeSubmit.parentNode.removeChild(removeSubmit);
+    var removeInput = document.getElementById('inputBox');
+    removeInput.parentNode.removeChild(removeInput);
 }
 
 function removeBtn(id, area) {
-    console.log("remove button create", id)
     var removeExp = document.getElementById(id);
     var removeBtn = document.createElement('input');
     removeBtn.setAttribute('type', 'button');
