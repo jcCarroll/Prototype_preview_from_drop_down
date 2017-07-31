@@ -15,12 +15,13 @@ function getInput(level) {
     var aTag = document.createElement('a');
     aTag.setAttribute('href', '#');
     aTag.setAttribute('value', selectedItem);
-    aTag.setAttribute('onclick', 'removeBtn("' + currentID + '","' + level + '"),editBtn("' + currentID + '")');
+    aTag.setAttribute('onclick', 'buttons("' + currentID + '")');
     aTag.setAttribute('id', currentID);
     aTag.setAttribute('class', level);
     var selectedItemText = document.createTextNode(selectedItem);
     aTag.appendChild(selectedItemText);
     previewArea.appendChild(aTag);
+
     var br = document.createElement('br');
     br.setAttribute('id', 'br' + currentID)
     previewArea.appendChild(br);
@@ -35,6 +36,19 @@ function expCounter(location) {
         inputItem += 1;
     } else if (location == 'inputThing') {
         inputThing += 1;
+    }
+}
+
+function buttons(id, area) {
+    var remove = document.getElementById('removeItem');
+    var edit = document.getElementById('editItem');
+    var input = document.getElementById('inputBox');
+    var submit = document.getElementById('editSubmit');
+    if (remove || edit || input || submit) {
+        alert('You must complete current edit/remove first');
+    } else {
+        editBtn(id);
+        removeBtn(id, area);
     }
 }
 
