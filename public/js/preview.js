@@ -2,12 +2,12 @@ var inputArea = 0;
 var inputList = 0;
 var inputItem = 0;
 var inputThing = 0;
-
+// Onclick function to create element and get new address for element
 function createExp(level, location) {
     expCounter(location);
     getInput(level);
 }
-
+// Takes input from drop down and creates element 
 function getInput(level) {
     var currentID = inputArea + "." + inputList + "." + inputItem + "." + inputThing;
     var selectedItem = document.getElementById(level).value;
@@ -21,12 +21,12 @@ function getInput(level) {
     var selectedItemText = document.createTextNode(selectedItem);
     aTag.appendChild(selectedItemText);
     previewArea.appendChild(aTag);
-
+    // <br> to help with tree building
     var br = document.createElement('br');
     br.setAttribute('id', 'br' + currentID)
     previewArea.appendChild(br);
 }
-
+// Creates new address based on level of new element being created
 function expCounter(location) {
     if (location == 'inputArea') {
         inputArea += 1;
@@ -38,7 +38,7 @@ function expCounter(location) {
         inputThing += 1;
     }
 }
-
+// Checks to see if edit buttons exist before creating new edit buttons
 function buttons(id, area) {
     var remove = document.getElementById('removeItem');
     var edit = document.getElementById('editItem');
@@ -52,7 +52,7 @@ function buttons(id, area) {
         removeBtn(id, area);
     }
 }
-
+// Creates edit button
 function editBtn(id) {
     var editExp = document.getElementById(id);
     var editBtn = document.createElement('input');
@@ -62,16 +62,13 @@ function editBtn(id) {
     editBtn.setAttribute('value', 'Edit');
     editExp.parentNode.insertBefore(editBtn, editExp.nextSibling);
 }
-
+// Creates input box and submit button when edit button is clicked and removes edit and remove buttons
 function edit(id) {
     var removeEditBtn = document.getElementById('editItem');
     removeEditBtn.remove(removeEditBtn);
 
     var removeRemoveBtn = document.getElementById('removeItem');
     removeRemoveBtn.remove(removeRemoveBtn);
-
-    var removeCancelBtn = document.getElementById('cancelItem');
-    removeCancelBtn.remove(removeCancelBtn);
 
     var editInputBox = document.getElementById(id);
     var editSubmit = document.createElement('input');
@@ -87,7 +84,7 @@ function edit(id) {
     editInput.setAttribute('id', 'inputBox');
     editExp.parentNode.insertBefore(editInput, editExp.nextSibling);
 }
-
+// Changes text of list item and removes input box, submit, and cancel
 function editSubmit(id) {
     var newName = document.getElementById('inputBox').value;
     document.getElementById(id).innerHTML = newName;
@@ -98,7 +95,7 @@ function editSubmit(id) {
     var removeInput = document.getElementById('inputBox');
     removeInput.parentNode.removeChild(removeInput);
 }
-
+// Creates button to remove item in preview when list item is clicked
 function removeBtn(id, area) {
     var removeExp = document.getElementById(id);
     var removeBtn = document.createElement('input');
@@ -108,7 +105,7 @@ function removeBtn(id, area) {
     removeBtn.setAttribute('value', 'Remove');
     removeExp.parentNode.insertBefore(removeBtn, removeExp.nextSibling);
 }
-
+// Removes item based on level in list and removes edit, remove, and cancel buttons
 function remove(id, area) {
     var removeEdit = document.getElementById('editItem')
     removeEdit.parentNode.removeChild(removeEdit)
@@ -144,7 +141,7 @@ function remove(id, area) {
         }
     }
 }
-
+// Creates cancle button when list preview item is clicked
 function cancelBtn(id) {
     var cancel = document.getElementById(id);
     var cancelBtn = document.createElement('input');
@@ -154,7 +151,7 @@ function cancelBtn(id) {
     cancelBtn.setAttribute('onclick', 'cancel("' + id + '")');
     cancel.parentNode.insertBefore(cancelBtn, cancel.nextSibling);
 }
-
+// Removes all edit items when cancel button is clicked
 function cancel(id) {
     var remove = document.getElementById('removeItem');
     var edit = document.getElementById('editItem');
