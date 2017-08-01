@@ -94,6 +94,9 @@ function editSubmit(id) {
 
     var removeInput = document.getElementById('inputBox');
     removeInput.parentNode.removeChild(removeInput);
+
+    var removeCancel = document.getElementById('cancelItem');
+    removeCancel.parentNode.removeChild(removeCancel);
 }
 // Creates button to remove item in preview when list item is clicked
 function removeBtn(id, area) {
@@ -107,14 +110,14 @@ function removeBtn(id, area) {
 }
 // Removes item based on level in list and removes edit, remove, and cancel buttons
 function remove(id, area) {
-    var removeEdit = document.getElementById('editItem')
-    removeEdit.parentNode.removeChild(removeEdit)
+    var removeEdit = document.getElementById('editItem');
+    removeEdit.parentNode.removeChild(removeEdit);
 
-    var removeRemove = document.getElementById('removeItem')
-    removeRemove.parentNode.removeChild(removeRemove)
+    var removeRemove = document.getElementById('removeItem');
+    removeRemove.parentNode.removeChild(removeRemove);
 
-    var removeCancel = document.getElementById('cancelItem')
-    removeCancel.parentNode.removeChild(removeCancel)
+    var removeCancel = document.getElementById('cancelItem');
+    removeCancel.parentNode.removeChild(removeCancel);
 
     if (area == 'area') {
         splitID = id.substring(0, 1)
@@ -126,6 +129,7 @@ function remove(id, area) {
     if (area == "thing") {
         var takeAway = document.getElementById(id);
         takeAway.parentNode.removeChild(takeAway);
+
         var takeAwayBR = document.getElementById('br' + id);
         takeAwayBR.parentNode.removeChild(takeAwayBR);
     } else {
@@ -154,7 +158,17 @@ function cancelBtn(id) {
 // Removes all edit items when cancel button is clicked
 function cancel(id) {
     var remove = document.getElementById('removeItem');
+    remove.parentNode.removeChild(remove);
+
     var edit = document.getElementById('editItem');
+    edit.parentNode.removeChild(edit);
+
     var input = document.getElementById('inputBox');
+    input.parentNode.removeChild(input);
+
     var submit = document.getElementById('editSubmit');
+    submit.parentNode.removeChild(submit);
+
+    var cancel = document.getElementById('cancelItem');
+    cancel.parentNode.removeChild(cancel);
 }
