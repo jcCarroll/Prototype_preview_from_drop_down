@@ -6,6 +6,12 @@ var inputThing = 0;
 function createExp(level, location) {
     expCounter(location);
     getInput(level);
+    var submitFormExist = document.getElementById('submitFormBtn')
+    if (submitFormExist) {
+        return true;
+    } else {
+        submitForm();
+    }
 }
 // Takes input from drop down and creates element 
 function getInput(level) {
@@ -25,6 +31,16 @@ function getInput(level) {
     var br = document.createElement('br');
     br.setAttribute('id', 'br' + currentID)
     previewArea.appendChild(br);
+}
+// Creates button to submit form to createPreviewObject.js
+function submitForm() {
+    var getPreview = document.getElementById('preview');
+    var submitForm = document.createElement('input');
+    submitForm.setAttribute('type', 'button');
+    submitForm.setAttribute('id', 'submitFormBtn');
+    submitForm.setAttribute('onclick', 'getAllId()');
+    submitForm.setAttribute('value', 'Submit Form');
+    getPreview.parentNode.insertBefore(submitForm, getPreview.nextSibling);
 }
 // Creates new address based on level of new element being created
 function expCounter(location) {
