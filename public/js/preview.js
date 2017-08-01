@@ -15,7 +15,7 @@ function getInput(level) {
     var aTag = document.createElement('a');
     aTag.setAttribute('href', '#');
     aTag.setAttribute('value', selectedItem);
-    aTag.setAttribute('onclick', 'buttons("' + currentID + '")');
+    aTag.setAttribute('onclick', 'buttons("' + currentID + '","' + level + '")');
     aTag.setAttribute('id', currentID);
     aTag.setAttribute('class', level);
     var selectedItemText = document.createTextNode(selectedItem);
@@ -66,8 +66,12 @@ function editBtn(id) {
 function edit(id) {
     var removeEditBtn = document.getElementById('editItem');
     removeEditBtn.remove(removeEditBtn);
+
     var removeRemoveBtn = document.getElementById('removeItem');
     removeRemoveBtn.remove(removeRemoveBtn);
+
+    var removeCancelBtn = document.getElementById('cancelItem');
+    removeCancelBtn.remove(removeCancelBtn);
 
     var editInputBox = document.getElementById(id);
     var editSubmit = document.createElement('input');
@@ -90,6 +94,7 @@ function editSubmit(id) {
 
     var removeSubmit = document.getElementById('editSubmitBtn');
     removeSubmit.parentNode.removeChild(removeSubmit);
+
     var removeInput = document.getElementById('inputBox');
     removeInput.parentNode.removeChild(removeInput);
 }
@@ -101,12 +106,19 @@ function removeBtn(id, area) {
     removeBtn.setAttribute('id', 'removeItem');
     removeBtn.setAttribute('onclick', 'remove("' + id + '","' + area + '")');
     removeBtn.setAttribute('value', 'Remove');
-    removeExp.appendChild(removeBtn);
+    removeExp.parentNode.insertBefore(removeBtn, removeExp.nextSibling);
 }
 
 function remove(id, area) {
     var removeEdit = document.getElementById('editItem')
     removeEdit.parentNode.removeChild(removeEdit)
+
+    var removeRemove = document.getElementById('removeItem')
+    removeRemove.parentNode.removeChild(removeRemove)
+
+    var removeCancel = document.getElementById('cancelItem')
+    removeCancel.parentNode.removeChild(removeCancel)
+
     if (area == 'area') {
         splitID = id.substring(0, 1)
     } else if (area == "list") {
@@ -138,6 +150,7 @@ function cancelBtn(id) {
     var cancelBtn = document.createElement('input');
     cancelBtn.setAttribute('type', 'button');
     cancelBtn.setAttribute('value', 'Cancel');
+    cancelBtn.setAttribute('id', 'cancelItem')
     cancelBtn.setAttribute('onclick', 'cancel("' + id + '")');
     cancel.parentNode.insertBefore(cancelBtn, cancel.nextSibling);
 }
