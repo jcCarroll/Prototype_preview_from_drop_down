@@ -7,9 +7,7 @@ function createExp(level, location) {
     expCounter(location);
     getInput(level);
     var submitFormExist = document.getElementById('submitFormBtn')
-    if (submitFormExist) {
-        return true;
-    } else {
+    if (submitFormExist) {} else {
         submitForm();
     }
 }
@@ -174,17 +172,27 @@ function cancelBtn(id) {
 // Removes all edit items when cancel button is clicked
 function cancel(id) {
     var remove = document.getElementById('removeItem');
-    remove.parentNode.removeChild(remove);
+    if (remove) {
+        remove.parentNode.removeChild(remove);
+    }
 
     var edit = document.getElementById('editItem');
-    edit.parentNode.removeChild(edit);
+    if (edit) {
+        edit.parentNode.removeChild(edit);
+    }
 
     var input = document.getElementById('inputBox');
-    input.parentNode.removeChild(input);
+    if (input) {
+        input.parentNode.removeChild(input);
+    }
 
-    var submit = document.getElementById('editSubmit');
-    submit.parentNode.removeChild(submit);
+    var submit = document.getElementById('editSubmitBtn');
+    if (submit) {
+        submit.parentNode.removeChild(submit);
+    }
 
     var cancel = document.getElementById('cancelItem');
-    cancel.parentNode.removeChild(cancel);
+    if (cancel) {
+        cancel.parentNode.removeChild(cancel);
+    }
 }
